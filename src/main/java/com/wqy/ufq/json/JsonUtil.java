@@ -23,7 +23,7 @@ public class JsonUtil {
         if (jsonStr.startsWith("[")){
             JSONArray json = JSONUtil.parseArray(jsonStr);
             for(Object js:json){
-                //3、把里面的对象转化为JSONObject
+                //把里面的对象转化为JSONObject
                 JSONObject job = JSONUtil.parseObj(js);
                 return tojsonStrByKey(job.toString(),key);
             }
@@ -34,7 +34,7 @@ public class JsonUtil {
             Map.Entry entry = (Map.Entry) iterator.next();
             if (entry.getKey().toString().equals(key)){
                 if (!entry.getValue().toString().equals("")){
-                    return entry.getValue().toString();
+                    return "{"+key+":"+entry.getValue().toString()+"}";
                 }
             }
             if (entry.getValue() instanceof JSONArray){
@@ -46,4 +46,12 @@ public class JsonUtil {
         return "";
     }
 
+    public static String mergeJsonStr(String js1,String js2){
+        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject1 = JSONUtil.parseObj(js1);
+        JSONObject jsonObject2 = JSONUtil.parseObj(js2);
+        jsonObject.putAll(jsonObject1);
+        jsonObject.putAll(jsonObject2);
+        return jsonObject.toString();
+    }
 }
