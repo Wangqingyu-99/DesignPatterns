@@ -10,9 +10,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.*;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.jcp.xml.dsig.internal.dom.ApacheOctetStreamData;
-
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 public class HttpTest {
