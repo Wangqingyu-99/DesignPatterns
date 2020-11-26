@@ -24,6 +24,7 @@ public class AtomicStampedReferenceTest {
         },"线程B").start();
 
         Thread.sleep(3000);
+        System.out.println(stampedReference.getStamp());
         System.out.println(stampedReference.getReference());
     }
 }
