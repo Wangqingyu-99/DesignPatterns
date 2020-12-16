@@ -8,6 +8,10 @@ import java.util.Arrays;
 public class Test1 {
     public static void main(String[] args) {
         int[] nums = {5, 1, 1, 2, 0, 0};
+        //用数组工具排序
+//        Arrays.sort(nums);
+//        Arrays.stream(nums).forEach(a -> System.out.print(a + " "));
+
         bubble(nums);
     }
 
