@@ -30,7 +30,7 @@ public class HttpclientUtil {
      * @return
      * @throws Exception
      */
-    public String postMapHybrid(String url, String host,Map<String, Object> requestParams, String requestBodyJson)
+    public static String postMapHybrid(String url, String host,Map<String, Object> requestParams, String requestBodyJson)
             throws Exception {
         CookieStore cookieStore = null;
         // 构造URL
@@ -85,14 +85,13 @@ public class HttpclientUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        HttpclientUtil httpclientUtil = new HttpclientUtil();
         HashMap<String, Object> map = new HashMap<>();
-        map.put("str","天气");
-        map.put("bizId","天气");
-        String jsonParam = JSONUtil.toJsonStr(map);
-        System.out.println(jsonParam);
-//        String result = httpclientUtil.postMapHybrid("/test/getStr", "http://192.168.1.59:8082", map, null);
-        String result = httpclientUtil.postMapHybrid("/cptest/test", "http://192.168.1.59:8082", null, jsonParam);
+        map.put("type","yunda");
+        map.put("postid",4311068022773l);
+        map.put("temp",0.34836353144395504);
+        String jsonStr = JSONUtil.toJsonStr(map);
+        System.out.println(jsonStr);
+        String result = HttpclientUtil.postMapHybrid("/query", "https://www.kuaidi100.com", map, jsonStr);
         System.out.println(result);
     }
 }
