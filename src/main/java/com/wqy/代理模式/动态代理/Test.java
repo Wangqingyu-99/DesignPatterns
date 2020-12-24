@@ -10,8 +10,8 @@ import java.lang.reflect.Proxy;
 
 public class Test {
     public static void main(String[] args) {
-//        JDKProxy();
-        CGLIBProxy();
+        JDKProxy();
+//        CGLIBProxy();
     }
 
 
@@ -47,7 +47,7 @@ public class Test {
      * CGLIB的动态代理
      */
     public static void CGLIBProxy() {
-        UserServiceImpl userService = new UserServiceImpl();
+        UserServer userService = new UserServer();
         ClassLoader classLoader = userService.getClass().getClassLoader();
         Class<?>[] interfaces = userService.getClass().getInterfaces();
         Object o = Enhancer.create(userService.getClass(),new MethodInterceptor() {
@@ -67,7 +67,7 @@ public class Test {
                 System.out.println("============after==========");
             }
         });
-        UserService u = (UserService) o;
+        UserServer u = (UserServer) o;
         u.test();
     }
 }
