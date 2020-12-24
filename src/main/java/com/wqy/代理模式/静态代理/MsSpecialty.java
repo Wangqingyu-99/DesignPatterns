@@ -1,4 +1,4 @@
-package com.wqy.代理模式;
+package com.wqy.代理模式.静态代理;
 
 /**
  * 真实主题 眉山特产
